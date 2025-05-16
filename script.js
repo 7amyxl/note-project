@@ -4,16 +4,32 @@ var nbody = document.getElementById('n-body');
 var items = document.getElementById('items');
 var notecount = 0;
 var newNote = '';
+var tableDiv = document.getElementById('tbl-div');
 
 // events
+// for page loads
+window.onload = updateTable;
+
 form.addEventListener('submit',addNode);
+
+// update Table 
+function updateTable(){
+    // display the table when nodes get added
+    if(notecount > 0){
+        tableDiv.style.display = '';
+        items.appendChild(newNote);
+    }
+    else{
+        tableDiv.style.display = 'none';    
+    }
+}
 
 function addNode(e){
     // stop initial behavior
     e.preventDefault();
 
     if(ntitle.value == '' || nbody.value == ''){
-        alert('please input above Two of Input!')
+        alert('Please fill all Fields!');
     }
     else{
         // create a new note record
